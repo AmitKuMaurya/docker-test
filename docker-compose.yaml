@@ -1,0 +1,39 @@
+version: '3.8'
+
+services : 
+  postgres : 
+    image : postgres
+    ports : 
+     - "5432:5432"
+    environment :
+      POSTGRES_USER : amitatpostgres
+      POSTGRES_DB : test
+      POSTGRES_PASSWORD : my-password
+    # networks:
+    #   - mynet
+
+  redis :
+    image : redis
+    ports : 
+      - "6379:6379"
+    environment :
+      REDIS_USER : amitatredis
+      REDIS_DB : test
+      REDIS_PASSWORD : my-password
+
+    # networks:
+    #   - mynet  
+  
+  dockerise_node :
+    container_name: dockerise_node
+    build : /
+    ports :
+     - "8000:8000"
+    # networks:
+    #   - mynet 
+
+
+# networks:
+#    mynet:
+#        driver: bridge
+    
